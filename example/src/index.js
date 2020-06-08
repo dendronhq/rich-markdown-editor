@@ -1,7 +1,8 @@
 import * as React from "react";
-import { debounce } from "lodash";
+
+import {EditorAlt as Editor} from "../../src";
 import ReactDOM from "react-dom";
-import Editor from "../../src";
+import { debounce } from "lodash";
 
 const element = document.getElementById("main");
 const savedText = localStorage.getItem("saved");
@@ -58,6 +59,7 @@ class Example extends React.Component {
 
   render() {
     const { body } = document;
+    console.log("bond-example")
     if (body) body.style.backgroundColor = this.state.dark ? "#181A1B" : "#FFF";
 
     return (

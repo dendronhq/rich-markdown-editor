@@ -1,66 +1,65 @@
 /* global window File Promise */
 import * as React from "react";
-import { EditorState, Selection, Plugin } from "prosemirror-state";
-import { dropCursor } from "prosemirror-dropcursor";
-import { gapCursor } from "prosemirror-gapcursor";
+
+import { EditorState, Plugin, Selection } from "prosemirror-state";
+import { InputRule, inputRules } from "prosemirror-inputrules";
+import { MarkSpec, NodeSpec, Schema } from "prosemirror-model";
 import { MarkdownParser, MarkdownSerializer } from "prosemirror-markdown";
-import { EditorView } from "prosemirror-view";
-import { Schema, NodeSpec, MarkSpec } from "prosemirror-model";
-import { inputRules, InputRule } from "prosemirror-inputrules";
-import { keymap } from "prosemirror-keymap";
-import { baseKeymap } from "prosemirror-commands";
+import { dark as darkTheme, light as lightTheme } from "./theme";
 import { selectColumn, selectRow, selectTable } from "prosemirror-utils";
 import styled, { ThemeProvider } from "styled-components";
-import { light as lightTheme, dark as darkTheme } from "./theme";
-import Flex from "./components/Flex";
-import { SearchResult } from "./components/LinkEditor";
-import { EmbedDescriptor } from "./types";
-import FloatingToolbar from "./components/FloatingToolbar";
-import BlockMenu from "./components/BlockMenu";
-import Tooltip from "./components/Tooltip";
-import Extension from "./lib/Extension";
-import ExtensionManager from "./lib/ExtensionManager";
-import ComponentView from "./lib/ComponentView";
-import headingToSlug from "./lib/headingToSlug";
 
-// nodes
-import ReactNode from "./nodes/ReactNode";
-import Doc from "./nodes/Doc";
-import Text from "./nodes/Text";
+import BlockMenu from "./components/BlockMenu";
+// plugins
+import BlockMenuTrigger from "./plugins/BlockMenuTrigger";
 import Blockquote from "./nodes/Blockquote";
+// marks
+import Bold from "./marks/Bold";
 import BulletList from "./nodes/BulletList";
+import CheckboxItem from "./nodes/CheckboxItem";
+import CheckboxList from "./nodes/CheckboxList";
+import Code from "./marks/Code";
 import CodeBlock from "./nodes/CodeBlock";
 import CodeFence from "./nodes/CodeFence";
-import CheckboxList from "./nodes/CheckboxList";
-import CheckboxItem from "./nodes/CheckboxItem";
+import ComponentView from "./lib/ComponentView";
+import Doc from "./nodes/Doc";
+import { EditorView } from "prosemirror-view";
 import Embed from "./nodes/Embed";
+import { EmbedDescriptor } from "./types";
+import Extension from "./lib/Extension";
+import ExtensionManager from "./lib/ExtensionManager";
+import Flex from "./components/Flex";
+import FloatingToolbar from "./components/FloatingToolbar";
 import Heading from "./nodes/Heading";
+import Highlight from "./marks/Highlight";
+import History from "./plugins/History";
 import HorizontalRule from "./nodes/HorizontalRule";
 import Image from "./nodes/Image";
+import Italic from "./marks/Italic";
+import Keys from "./plugins/Keys";
+import Link from "./marks/Link";
 import ListItem from "./nodes/ListItem";
+import MarkdownPaste from "./plugins/MarkdownPaste";
 import OrderedList from "./nodes/OrderedList";
 import Paragraph from "./nodes/Paragraph";
+import Placeholder from "./plugins/Placeholder";
+// nodes
+import ReactNode from "./nodes/ReactNode";
+import { SearchResult } from "./components/LinkEditor";
+import SmartText from "./plugins/SmartText";
+import Strikethrough from "./marks/Strikethrough";
 import Table from "./nodes/Table";
 import TableCell from "./nodes/TableCell";
 import TableHeadCell from "./nodes/TableHeadCell";
 import TableRow from "./nodes/TableRow";
-
-// marks
-import Bold from "./marks/Bold";
-import Code from "./marks/Code";
-import Highlight from "./marks/Highlight";
-import Italic from "./marks/Italic";
-import Link from "./marks/Link";
-import Strikethrough from "./marks/Strikethrough";
-
-// plugins
-import BlockMenuTrigger from "./plugins/BlockMenuTrigger";
-import History from "./plugins/History";
-import Keys from "./plugins/Keys";
-import Placeholder from "./plugins/Placeholder";
-import SmartText from "./plugins/SmartText";
+import Text from "./nodes/Text";
+import Tooltip from "./components/Tooltip";
 import TrailingNode from "./plugins/TrailingNode";
-import MarkdownPaste from "./plugins/MarkdownPaste";
+import { baseKeymap } from "prosemirror-commands";
+import { dropCursor } from "prosemirror-dropcursor";
+import { gapCursor } from "prosemirror-gapcursor";
+import headingToSlug from "./lib/headingToSlug";
+import { keymap } from "prosemirror-keymap";
 
 export { schema, parser, serializer } from "./server";
 
@@ -1158,4 +1157,4 @@ const StyledEditor = styled("div")<{ readOnly?: boolean }>`
   }
 `;
 
-export {EditorAlt};
+export default EditorAlt;

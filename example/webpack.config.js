@@ -5,7 +5,7 @@ module.exports = {
   mode: "development",
 
   resolve: {
-    mainFields: ["browser", "main"],
+    mainFields: ["main"],
     extensions: [".ts", ".tsx", ".js"],
   },
 

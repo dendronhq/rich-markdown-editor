@@ -10,6 +10,7 @@
     "lint": "tsc --noEmit && eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
     "start": "webpack-serve --config example/webpack.config.js --content example/dist",
     "start:alt": "webpack-serve --config example/webpack.config.yaml.js --content example/dist",
+    "start:alt:debug": "node --inspect-brk ./node_modules/.bin/webpack-dev-server --mode development --open --config example/webpack.config.yaml.js",
     "build": "tsc",
     "prepublish": "yarn build"
   },
@@ -80,6 +81,7 @@
     "ts-loader": "^6.2.1",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.11.0",
     "webpack-serve": "^2.0.3"
   },
   "repository": {
